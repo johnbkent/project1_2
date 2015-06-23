@@ -10,6 +10,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/infoBar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoBar"
+        android:text="@string/bar_search"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" />
+        android:layout_marginBottom="@dimen/bar_padding_vertical"
+        android:layout_marginTop="@dimen/bar_padding_vertical"/>
 </RelativeLayout>

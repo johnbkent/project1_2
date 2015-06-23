@@ -10,19 +10,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Artist;
 import kaaes.spotify.webapi.android.models.ArtistsPager;
 
 
 public class MainActivity extends ActionBarActivity {
-    private MusicAdapter artistAdapter;
+    private ArtistAdapter artistAdapter;
+    private TextView infoBar;
 
 
     @Override
@@ -33,9 +34,10 @@ public class MainActivity extends ActionBarActivity {
         if (intent != null && intent.getAction() != null ) {
             if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
                 String query = intent.getStringExtra(SearchManager.QUERY);
-                doMySearch(query);
+                new ArtistSearchTask().execute(query);
             }
         }
+
     }
 
 
@@ -68,20 +70,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void doMySearch(String query){
 
-        //ArrayList<String> names = new ArrayList<>();
-        //ArrayList<ImageView> thumbs = new ArrayList<>();
-        //ImageView imageView;
-        //for (int count=0; count<10; count++){
-            //imageView = new ImageView(getApplicationContext());
-
-            //thumbs.add(imageView);
-        //}
-        //artistAdapter=new MusicAdapter(getApplicationContext(),R.id.fragment_main,names,thumbs);
-        //ListView fragmentView =(ListView) findViewById(R.id.listView);
-        //fragmentView.setAdapter(artistAdapter);
-    }
 
     private class ArtistSearchTask extends AsyncTask<String, Void, ArtistsPager> {
 
@@ -96,30 +85,28 @@ public class MainActivity extends ActionBarActivity {
         @Override
 
         protected void onPostExecute(ArtistsPager results){
+            infoBar = (TextView) findViewById(R.id.infoBar);
+            if (artistAdapter==null&& !results.artists.items.isEmpty()) {
+                artistAdapter=new ArtistAdapter(getApplicationContext(),R.id.list_item,new ArrayList<>(results.artists.items.subList(0,results.artists.items.size()-1)));
+                ListView listView = (ListView)findViewById(R.id.listView);
+                listView.setAdapter(artistAdapter);
+                infoBar.setText(R.string.track_prompt);
+            } else if (!results.artists.items.isEmpty()) {
+                artistAdapter.clear();
+                for (Artist artist : results.artists.items){
+                    artistAdapter.add(artist);
+                }
+                artistAdapter.notifyDataSetChanged();
+            } else {
+                infoBar.setText(R.string.artist_error);
 
-
-        }
-
-    }
-
-    private class ImageLoadTask extends AsyncTask<String, Void, ArrayList<ImageView>> {
-
-        @Override
-        protected ArrayList<ImageView> doInBackground(String... params) {
-            ArrayList<ImageView> imageViewList = new ArrayList<>();
-            ImageView imageView = new ImageView(getApplicationContext());
-            for (String url : params) {
-                Picasso.with(getApplicationContext()).load(url).into(imageView);
-                imageViewList.add(imageView);
             }
-            return imageViewList;
-        }
 
-        @Override
-        protected void onPostExecute(ArrayList<ImageView> results){
 
         }
+
     }
+
 
 
 

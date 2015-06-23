@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/image_thumb_width"
+        android:layout_height="@dimen/image_thumb_height"
+        android:id="@+id/imageViewTrack"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/thumb_padding_vertical"
+        android:layout_marginBottom="@dimen/thumb_padding_vertical"
+        android:layout_marginLeft="@dimen/thumb_padding_left"
+        android:layout_marginRight="@dimen/thumb_padding_right"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bar_search"
+        android:layout_alignTop="@+id/imageViewTrack"
+        android:layout_toRightOf="@+id/imageViewTrack"
+        android:layout_toEndOf="@+id/imageViewTrack"
+        android:paddingBottom="@dimen/track_padding"
+        android:id="@+id/trackTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/trackTitle"
+        android:layout_toRightOf="@+id/imageViewTrack"
+        android:layout_alignBottom="@+id/imageViewTrack"
+        android:id="@+id/trackAlbum"
+        android:text="I'd Like a pizza"/>
+</RelativeLayout>
