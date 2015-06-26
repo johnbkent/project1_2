@@ -6,4 +6,6 @@
     <string name="artist_error">No artists found</string>
     <string name="bar_search">Use the action bar to search for an artist</string>
     <string name="track_prompt">Select an artist to see their top 10 tracks</string>
+    <string name="track_error">No tracks found</string>
+    <string name="track_results">Here are the top tracks for the selected artist</string>
 </resources>

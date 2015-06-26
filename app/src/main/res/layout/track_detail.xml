@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bar_search"
+        android:textColor="@color/black"
         android:layout_alignTop="@+id/imageViewTrack"
         android:layout_toRightOf="@+id/imageViewTrack"
         android:layout_toEndOf="@+id/imageViewTrack"
@@ -32,5 +32,6 @@
         android:layout_toRightOf="@+id/imageViewTrack"
         android:layout_alignBottom="@+id/imageViewTrack"
         android:id="@+id/trackAlbum"
-        android:text="I'd Like a pizza"/>
+        android:textColor="@color/black"
+        />
 </RelativeLayout>

@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/infoBar"
         android:text="@string/bar_search"
+        android:textColor="@color/black"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/bar_padding_vertical"

@@ -22,7 +22,7 @@
         android:layout_toEndOf="@+id/list_thumb"
         android:gravity="center_vertical"
         android:id="@+id/list_text"
-        android:textColor="@color/primary_text_disabled_material_light"/>
+        android:textColor="@color/black"/>
 
 
 </RelativeLayout>
