@@ -16,7 +16,7 @@ import kaaes.spotify.webapi.android.models.Artist;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    private TrackAdapter trackAdapter;
+
 
 
     public MainActivityFragment() {
@@ -39,7 +39,7 @@ public class MainActivityFragment extends Fragment {
                     intent.putExtra("id",artist.id);
                     intent.putExtra("name",artist.name);
                     startActivity(intent);
-//                    new TrackTask().execute(artist.id);
+
                 }
             }
         });

@@ -30,14 +30,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
-        if (intent != null && intent.getAction() != null ) {
-            if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-                String query = intent.getStringExtra(SearchManager.QUERY);
-                new ArtistSearchTask().execute(query);
+        if (savedInstanceState==null) {
+            Intent intent = getIntent();
+            if (intent != null && intent.getAction() != null) {
+                if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                    String query = intent.getStringExtra(SearchManager.QUERY);
+                    query.replaceAll(" ", "+");
+                    new ArtistSearchTask().execute(query);
+                }
             }
         }
-
     }
 
 

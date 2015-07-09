@@ -1,12 +1,13 @@
 package com.project1_2.johnkent.spotifystreamer;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class TracksActivity extends ActionBarActivity {
+public class TracksActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class TracksActivity extends ActionBarActivity {
                         .add(android.R.id.content, frag).commit();
             }
         }
+
     }
 
 
@@ -39,6 +41,11 @@ public class TracksActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 
