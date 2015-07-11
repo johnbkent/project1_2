@@ -7,20 +7,22 @@ import android.os.Parcelable;
  * Created by John on 7/11/2015.
  */
 public class MusicParcelable implements Parcelable {
-    String name;
+    String artistName;
+    String trackName;
     String id;
     String imgUrl;
     String albumName;
     String previewUrl;
 
     public MusicParcelable (String name, String id, String imgUrl){
-        this.name=name;
+        this.artistName=name;
         this.id=id;
         this.imgUrl=imgUrl;
     }
 
-    public MusicParcelable (String name, String albumName, String previewUrl, String imgUrl){
-        this.name=name;
+    public MusicParcelable (String name, String artistName, String albumName, String previewUrl, String imgUrl){
+        this.trackName=name;
+        this.artistName=artistName;
         this.albumName=albumName;
         this.previewUrl=previewUrl;
         this.imgUrl=imgUrl;
@@ -32,15 +34,15 @@ public class MusicParcelable implements Parcelable {
 
     @Override
     public String toString(){
-        if (albumName.equals(null)){
-            return name + ": " + id + ": " + imgUrl;
+        if (trackName.equals(null)){
+            return artistName + ": " + id + ": " + imgUrl;
         } else{
-            return name + ": " + albumName + ": " + previewUrl + ": " + imgUrl;
+            return trackName + ": " +  artistName + ": " + albumName + ": " + previewUrl + ": " + imgUrl;
         }
     }
 
     private MusicParcelable(Parcel in){
-        name=in.readString();
+        artistName=in.readString();
         id=in.readString();
         albumName=in.readString();
         previewUrl=in.readString();
@@ -48,7 +50,8 @@ public class MusicParcelable implements Parcelable {
     }
 
     public void writeToParcel(Parcel out, int flags){
-        out.writeString(name);
+        out.writeString(artistName);
+        out.writeString(trackName);
         out.writeString(id);
         out.writeString(albumName);
         out.writeString(previewUrl);

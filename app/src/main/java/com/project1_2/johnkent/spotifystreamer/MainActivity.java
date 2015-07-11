@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     private ArrayList<Artist> currentArtists;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +48,10 @@ public class MainActivity extends ActionBarActivity {
             currentArtists= new ArrayList<>();
             infoBar = (TextView) findViewById(R.id.infoBar);
             ArrayList<MusicParcelable> list = savedInstanceState.getParcelableArrayList("artists");
-            //currentArtists.clear();
             for (MusicParcelable mp : list){
                 Artist artist = new Artist();
                 artist.images = new ArrayList<>();
-                artist.name=mp.name;
+                artist.name=mp.artistName;
                 artist.id=mp.id;
                 Image image = new Image();
                 image.url=mp.imgUrl;
